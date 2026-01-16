@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Reserva tus servicios en [Nombre del Proyecto]. Envía tu solicitud de disponibilidad y te respondemos con opciones y precios." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <title>Booking | [Nombre del Proyecto]</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.tu-dominio.com/booking" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Booking | [Nombre del Proyecto]" />
+  <meta property="og:description" content="Reserva hospedaje, tours, terapias, spa y paquetes. Solicita disponibilidad en minutos." />
+  <meta property="og:url" content="https://www.tu-dominio.com/booking" />
+  <meta property="og:image" content="https://www.tu-dominio.com/assets/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Booking | [Nombre del Proyecto]" />
+  <meta name="twitter:description" content="Reserva hospedaje, tours, terapias, spa y paquetes. Solicita disponibilidad en minutos." />
+  <meta name="twitter:image" content="https://www.tu-dominio.com/assets/og-image.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/styles.css" /> -->
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="nav__brand" href="/">[NombreProyecto]</a>
+
+      <ul class="nav__links">
+      <li><a href="About Us.html">About Us</a></li>
+      <li><a href="Amenities.html">Amenities</a></li>
+      <li><a href="Gallery.html">Gallery</a></li>
+      <li><a href="Packages.html" aria-current="page">Packages</a></li>
+      <li><a href="Booking.html">Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Page Hero -->
+    <section class="page-hero booking-hero" aria-labelledby="booking-hero-title">
+      <div class="page-hero__inner">
+        <h1 id="booking-hero-title">Booking</h1>
+        <p class="lead">
+          Reserva hospedaje, tours, terapias, spa o paquetes. Envía tu solicitud y te responderemos con disponibilidad.
+        </p>
+      </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section class="section booking" aria-labelledby="booking-title">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2 id="booking-title">Solicitud de reserva</h2>
+          <p>
+            Completa este formulario con tus fechas y servicios deseados.
+            Responderemos lo antes posible con disponibilidad y precios.
+          </p>
+        </header>
+
+        <form class="booking-form" action="/enviar-reserva" method="post">
+          <!-- Honeypot (basic anti-spam) -->
+          <div class="hp" aria-hidden="true">
+            <label>Deja este campo vacío
+              <input type="text" name="company" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Datos de contacto</legend>
+
+            <div class="form-grid">
+              <label>
+                Nombre y apellido
+                <input type="text" name="full_name" autocomplete="name" required />
+              </label>
+
+              <label>
+                Email
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+
+              <label>
+                Teléfono / WhatsApp
+                <input type="tel" name="phone" autocomplete="tel" inputmode="tel" />
+              </label>
+
+              <label>
+                País / Ciudad
+                <input type="text" name="location" autocomplete="country-name" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Fechas y personas</legend>
+
+            <div class="form-grid">
+              <label>
+                Check-in
+                <input type="date" name="checkin" required />
+              </label>
+
+              <label>
+                Check-out
+                <input type="date" name="checkout" required />
+              </label>
+
+              <label>
+                Adultos
+                <input type="number" name="adults" min="1" value="1" required />
+              </label>
+
+              <label>
+                Niños (opcional)
+                <input type="number" name="children" min="0" value="0" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Servicios a reservar</legend>
+
+            <p class="form-hint">
+              Selecciona todo lo que aplique. Si eliges un paquete, puedes especificar cuál.
+            </p>
+
+            <div class="checkbox-grid" role="group" aria-label="Servicios">
+              <label class="check">
+                <input type="checkbox" name="services[]" value="Hospedaje" />
+                <span>Hospedaje</span>
+              </label>
+
+              <label class="check">
+                <input type="checkbox" name="services[]" value="Tours" />
+                <span>Tours</span>
+              </label>
+
+              <label class="check">
+                <input type="checkbox" name="services[]" value="Alimentacion" />
+                <span>Alimentación</span>
+              </label>
+
+              <label class="check">
+                <input type="checkbox" name="services[]" value="Terapias" />
+                <span>Terapias</span>
+              </label>
+
+              <label class="check">
+                <input type="checkbox" name="services[]" value="WellnessSpa" />
+                <span>Wellness Spa</span>
+              </label>
+
+              <label class="check">
+                <input type="checkbox" name="services[]" value="Diversion" />
+                <span>Diversión</span>
+              </label>
+
+              <label class="check">
+                <input type="checkbox" name="services[]" value="SalonMultiuso" />
+                <span>Salón Multiuso</span>
+              </label>
+
+              <label class="check">
+                <input type="checkbox" name="services[]" value="Paquetes" />
+                <span>Paquetes</span>
+              </label>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                Paquete (si aplica)
+                <select name="package_choice">
+                  <option value="">Seleccionar…</option>
+                  <option value="RelaxNaturaleza">Relax & Naturaleza</option>
+                  <option value="WellnessIntegral">Wellness Integral</option>
+                  <option value="AventuraTours">Aventura & Tours</option>
+                  <option value="RetiroPrivado">Retiro Privado</option>
+                </select>
+              </label>
+
+              <label>
+                Preferencia de horario (opcional)
+                <select name="time_preference">
+                  <option value="">Sin preferencia</option>
+                  <option value="Manana">Mañana</option>
+                  <option value="Tarde">Tarde</option>
+                  <option value="Noche">Noche</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Detalles adicionales</legend>
+
+            <div class="form-grid">
+              <label>
+                Tipo de experiencia (opcional)
+                <select name="experience_type">
+                  <option value="">Seleccionar…</option>
+                  <option value="Descanso">Descanso</option>
+                  <option value="Bienestar">Bienestar</option>
+                  <option value="Aventura">Aventura</option>
+                  <option value="Familiar">Familiar</option>
+                  <option value="Pareja">Pareja</option>
+                  <option value="Evento">Evento / Taller</option>
+                </select>
+              </label>
+
+              <label>
+                Presupuesto aproximado (opcional)
+                <input type="text" name="budget" placeholder="Ej: $300 - $600" />
+              </label>
+            </div>
+
+            <label>
+              Mensaje / Requerimientos
+              <textarea name="message" rows="6" placeholder="Ej: alergias, celebraciones, horario de llegada, necesidades especiales…" required></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Confirmación</legend>
+
+            <label class="check">
+              <input type="checkbox" name="consent" required />
+              <span>Confirmo que la información es correcta y autorizo contacto para gestionar la reserva.</span>
+            </label>
+
+            <p class="form-hint">
+              Nota: esta solicitud no confirma la reserva automáticamente. Te contactaremos para confirmar disponibilidad y pago.
+            </p>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Enviar solicitud</button>
+
+            <!-- Optional quick contact -->
+            <a class="btn btn--ghost" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
+              Reservar por WhatsApp
+            </a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Extra info blocks (optional) -->
+    <section class="section booking-info" aria-labelledby="booking-info-title">
+      <div class="section__inner">
+        <h2 id="booking-info-title">Información útil</h2>
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>Horarios</h3>
+            <p>Check-in: [hora] · Check-out: [hora]. (Edita según tu operación real.)</p>
+          </article>
+          <article class="info-card">
+            <h3>Política</h3>
+            <p>Incluye cancelaciones, cambios, depósito y condiciones principales.</p>
+          </article>
+          <article class="info-card">
+            <h3>Contacto</h3>
+            <p>
+              Tel: <a href="tel:+10000000000">+1 (000) 000-0000</a><br />
+              Email: <a href="mailto:contacto@tu-dominio.com">contacto@tu-dominio.com</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Pie de página">
+    <div class="footer__inner">
+      <p>© <span id="year"></span> [Nombre del Proyecto]</p>
+      <p><a href="/privacy" rel="nofollow">Privacidad</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

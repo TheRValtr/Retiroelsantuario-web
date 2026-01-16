@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Galería de [Nombre del Proyecto]. Explora imágenes del entorno, hospedaje, experiencias y espacios." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <title>Gallery | [Nombre del Proyecto]</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.tu-dominio.com/gallery" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gallery | [Nombre del Proyecto]" />
+  <meta property="og:description" content="Explora imágenes del proyecto: naturaleza, bienestar, hospedaje y experiencias." />
+  <meta property="og:url" content="https://www.tu-dominio.com/gallery" />
+  <meta property="og:image" content="https://www.tu-dominio.com/assets/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gallery | [Nombre del Proyecto]" />
+  <meta name="twitter:description" content="Explora imágenes del proyecto: naturaleza, bienestar, hospedaje y experiencias." />
+  <meta name="twitter:image" content="https://www.tu-dominio.com/assets/og-image.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/styles.css" /> -->
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="nav__brand" href="/">[NombreProyecto]</a>
+
+      <ul class="nav__links">
+      <li><a href="About Us.html">About Us</a></li>
+      <li><a href="Amenities.html">Amenities</a></li>
+      <li><a href="Gallery.html">Gallery</a></li>
+      <li><a href="Packages.html" aria-current="page">Packages</a></li>
+      <li><a href="Booking.html">Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Page Hero -->
+    <section class="page-hero gallery-hero" aria-labelledby="gallery-hero-title">
+      <div class="page-hero__inner">
+        <h1 id="gallery-hero-title">Gallery</h1>
+        <p class="lead">
+          Un vistazo al entorno, los espacios y las experiencias de [Nombre del Proyecto].
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" aria-labelledby="gallery-title">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2 id="gallery-title">Imágenes del proyecto</h2>
+          <p>
+            Agrega o reemplaza imágenes en <code>/assets/gallery/</code>. Incluye textos <code>alt</code> descriptivos
+            para SEO y accesibilidad.
+          </p>
+        </header>
+
+        <!-- Optional category filter (HTML only placeholder) -->
+        <nav class="gallery-filter" aria-label="Filtrar galería">
+          <ul class="gallery-filter__list">
+            <li><a href="#all" aria-current="true">Todas</a></li>
+            <li><a href="#naturaleza">Naturaleza</a></li>
+            <li><a href="#hospedaje">Hospedaje</a></li>
+            <li><a href="#experiencias">Experiencias</a></li>
+            <li><a href="#spa">Spa</a></li>
+          </ul>
+        </nav>
+
+        <!-- Image Grid -->
+        <div class="gallery-grid" aria-label="Galería de imágenes">
+          <!-- Tip: wrap each image in <a> linking to the full-res file for a simple "open image" behavior -->
+          <figure class="gallery-grid__item" id="all">
+            <a href="/assets/gallery/01-full.jpg">
+              <img
+                src="/assets/gallery/01.jpg"
+                alt="Vista panorámica del entorno natural"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </a>
+            <figcaption>Entorno natural</figcaption>
+          </figure>
+
+          <figure class="gallery-grid__item">
+            <a href="/assets/gallery/02-full.jpg">
+              <img
+                src="/assets/gallery/02.jpg"
+                alt="Sendero o área verde del proyecto"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </a>
+            <figcaption>Naturaleza</figcaption>
+          </figure>
+
+          <figure class="gallery-grid__item" id="hospedaje">
+            <a href="/assets/gallery/03-full.jpg">
+              <img
+                src="/assets/gallery/03.jpg"
+                alt="Habitación o espacio de hospedaje"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </a>
+            <figcaption>Hospedaje</figcaption>
+          </figure>
+
+          <figure class="gallery-grid__item">
+            <a href="/assets/gallery/04-full.jpg">
+              <img
+                src="/assets/gallery/04.jpg"
+                alt="Área común o sala de estar del proyecto"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </a>
+            <figcaption>Espacios</figcaption>
+          </figure>
+
+          <figure class="gallery-grid__item" id="experiencias">
+            <a href="/assets/gallery/05-full.jpg">
+              <img
+                src="/assets/gallery/05.jpg"
+                alt="Experiencia o actividad para visitantes"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </a>
+            <figcaption>Experiencias</figcaption>
+          </figure>
+
+          <figure class="gallery-grid__item" id="spa">
+            <a href="/assets/gallery/06-full.jpg">
+              <img
+                src="/assets/gallery/06.jpg"
+                alt="Área de spa o bienestar"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </a>
+            <figcaption>Spa</figcaption>
+          </figure>
+
+          <!-- Add more images as needed -->
+          <!--
+          <figure class="gallery-grid__item">
+            <a href="/assets/gallery/07-full.jpg">
+              <img src="/assets/gallery/07.jpg" alt="Descripción" loading="lazy" decoding="async" width="1200" height="800" />
+            </a>
+            <figcaption>Etiqueta</figcaption>
+          </figure>
+          -->
+        </div>
+
+        <!-- Optional CTA -->
+        <div class="gallery-cta">
+          <p>¿Quieres disponibilidad o recomendaciones según tu plan?</p>
+          <a class="btn" href="/#booking">Haz tu consulta</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Pie de página">
+    <div class="footer__inner">
+      <p>© <span id="year"></span> [Nombre del Proyecto]</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
