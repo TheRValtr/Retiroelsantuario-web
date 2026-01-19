@@ -132,8 +132,8 @@ body{
    HERO
    ================ */
 .hero{
-  /* Put your hero image here */
-  background-image: url("/assets/hero.jpg");
+  
+  background-image: url("img/Mountain\ view\ with\ people\ .jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
