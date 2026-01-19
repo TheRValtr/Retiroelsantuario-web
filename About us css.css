@@ -1,0 +1,115 @@
+/* =========================
+   ABOUT PAGE CSS (matches your main theme)
+   Colors:
+   - Primary: #064854
+   - Accent:  #5bd8cf
+   Fonts:
+   - Display (Old English vibe): --display-font
+   - Body: --body-font
+   ========================= */
+
+/* Optional local font (use if you have it) */
+/*
+@font-face {
+  font-family: "OldEnglish";
+  src: url("/assets/fonts/OldEnglish.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+:root{
+  --primary: #064854;
+  --accent:  #5bd8cf;
+
+  --bg: #ffffff;
+  --text: #0b0b0b;
+  --muted: rgba(0,0,0,.72);
+
+  --line: rgba(6,72,84,.20);
+  --shadow: 0 10px 28px rgba(0,0,0,.12);
+  --radius: 18px;
+  --max: 1100px;
+
+  --display-font: "OldEnglish", "UnifrakturCook", "UnifrakturMaguntia", "IM Fell English SC", Georgia, serif;
+  --body-font: Georgia, "Times New Roman", serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body-font);
+  line-height: 1.55;
+}
+
+/* Skip link */
+.skip-link{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  transform: translateY(-220%);
+  background: var(--accent);
+  color: #000;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  z-index: 9999;
+  transition: transform .2s ease;
+}
+.skip-link:focus{ transform: translateY(0); }
+
+/* =========================
+   HEADER / NAV (No hero background here)
+   ========================= */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav{
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.nav__brand{
+  text-decoration: none;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav__brand-text{
+  font-family: var(--display-font);
+  font-size: 22px;
+  letter-spacing: .4px;
+}
+
+.nav__links{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.nav__links a{
+  text-decorati
