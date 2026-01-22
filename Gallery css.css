@@ -1,0 +1,420 @@
+/* =========================
+   GALLERY ALBUM CSS
+   Theme:
+   - Primary: #064854
+   - Accent:  #5bd8cf
+   Typography:
+   - Display: old-english vibe fallback stack
+   ========================= */
+
+/* Optional local font (if you have it) */
+/*
+@font-face {
+  font-family: "OldEnglish";
+  src: url("/assets/fonts/OldEnglish.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+:root{
+  --primary: #064854;
+  --accent:  #5bd8cf;
+
+  --bg: #ffffff;
+  --text: #0b0b0b;
+  --muted: rgba(0,0,0,.70);
+
+  --line: rgba(6,72,84,.20);
+  --shadow: 0 10px 24px rgba(0,0,0,.10);
+  --radius: 18px;
+  --max: 1100px;
+
+  --display-font: "OldEnglish", "UnifrakturCook", "UnifrakturMaguntia", "IM Fell English SC", Georgia, serif;
+  --body-font: Georgia, "Times New Roman", serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body-font);
+  line-height: 1.55;
+}
+
+/* Skip link */
+.skip-link{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  transform: translateY(-220%);
+  background: var(--accent);
+  color: #000;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  z-index: 9999;
+  transition: transform .2s ease;
+}
+.skip-link:focus{ transform: translateY(0); }
+
+/* =========================
+   HEADER / NAV
+   ========================= */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav{
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.nav__brand{
+  text-decoration: none;
+  color: var(--primary);
+  font-family: var(--display-font);
+  font-size: 22px;
+  letter-spacing: .4px;
+}
+
+.nav__links{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.nav__links a{
+  text-decoration: none;
+  color: #000;
+  font-family: var(--display-font);
+  font-size: 16px;
+  padding: 10px 6px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s ease, opacity .2s ease;
+  opacity: .88;
+}
+
+.nav__links a:hover,
+.nav__links a:focus-visible{
+  opacity: 1;
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+.nav__links a[aria-current="page"]{
+  opacity: 1;
+  border-bottom-color: var(--primary);
+}
+
+/* =========================
+   PAGE HERO
+   ========================= */
+.page-hero{
+  padding: 64px 16px 36px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(900px 300px at 20% 10%, rgba(91,216,207,.18), transparent 60%),
+    radial-gradient(700px 260px at 90% 0%, rgba(6,72,84,.12), transparent 55%),
+    #fff;
+}
+
+.page-hero__inner{
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.page-hero h1{
+  margin: 0 0 10px;
+  font-family: var(--display-font);
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.1;
+}
+
+.lead{
+  margin: 0;
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* =========================
+   SECTION WRAPPER
+   ========================= */
+.section{ padding: 72px 16px; }
+
+.section__inner{
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.section__header h2{
+  margin: 0 0 10px;
+  font-family: var(--display-font);
+  color: var(--primary);
+  font-size: clamp(28px, 2.6vw, 40px);
+}
+
+.section__header p{
+  margin: 0;
+  max-width: 72ch;
+  color: var(--muted);
+}
+
+/* =========================
+   FILTER (optional)
+   ========================= */
+.gallery-filter{
+  margin-top: 16px;
+}
+
+.gallery-filter__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-filter__list a{
+  text-decoration: none;
+  color: var(--primary);
+  font-family: var(--display-font);
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(6,72,84,.20);
+  background: rgba(91,216,207,.10);
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.gallery-filter__list a:hover,
+.gallery-filter__list a:focus-visible{
+  transform: translateY(-1px);
+  background: rgba(91,216,207,.18);
+  border-color: rgba(91,216,207,.45);
+  outline: none;
+}
+
+/* =========================
+   ALBUM GRID (Facebook-ish album tiles)
+   ========================= */
+.album{ margin-top: 22px; }
+
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+/* Card */
+.gallery-grid__item{
+  margin: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease;
+}
+
+.gallery-grid__item:hover{
+  transform: translateY(-2px);
+}
+
+/* Click area */
+.gallery-grid__item a{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Consistent tile height */
+.gallery-grid__item img{
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+/* Caption */
+.gallery-grid__item figcaption{
+  padding: 10px 12px 12px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(0,0,0,.78);
+  border-top: 1px solid rgba(6,72,84,.14);
+}
+
+.gallery-grid__item figcaption strong{
+  display: block;
+  font-family: var(--display-font);
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+/* =========================
+   Pagination controls (ready for JS)
+   ========================= */
+.album-nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(91,216,207,.10);
+}
+
+.album-btn{
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--display-font);
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.album-btn:hover,
+.album-btn:focus-visible{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  outline: none;
+}
+
+.album-btn:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.album-page{
+  margin: 0;
+  color: rgba(0,0,0,.75);
+}
+
+/* =========================
+   CTA
+   ========================= */
+.gallery-cta{
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(6,72,84,.06);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.gallery-cta p{
+  margin: 0;
+  color: rgba(0,0,0,.75);
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  font-family: var(--display-font);
+  font-size: 16px;
+
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.btn:hover,
+.btn:focus-visible{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  outline: none;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer{
+  background: var(--primary);
+  color: #fff;
+  padding: 46px 16px 22px;
+  margin-top: 40px;
+}
+
+.footer__inner{
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 980px){
+  .gallery-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gallery-grid__item img{
+    height: 220px;
+  }
+}
+
+@media (max-width: 560px){
+  .nav{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .gallery-grid{
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid__item img{
+    height: 240px;
+  }
+  .album-nav{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .album-btn{
+    width: 100%;
+  }
+  .gallery-cta{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
