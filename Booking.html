@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Reserva tus servicios en [Nombre del Proyecto]. Envía tu solicitud de disponibilidad y te respondemos con opciones y precios." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#0b0b0f" />
+  <meta name="theme-color" content="#064854" />
 
   <title>Booking | [Nombre del Proyecto]</title>
 
@@ -30,7 +30,7 @@
   <link rel="icon" href="/favicon.ico" />
 
   <!-- CSS -->
-  <!-- <link rel="stylesheet" href="/styles.css" /> -->
+  <link rel="stylesheet" href="bookingstyle.css" />
 </head>
 
 <body>
@@ -41,17 +41,17 @@
       <a class="nav__brand" href="/">[NombreProyecto]</a>
 
       <ul class="nav__links">
-      <li><a href="About Us.html">About Us</a></li>
-      <li><a href="Amenities.html">Amenities</a></li>
-      <li><a href="Gallery.html">Gallery</a></li>
-      <li><a href="Packages.html" aria-current="page">Packages</a></li>
-      <li><a href="Booking.html">Booking</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="Amenities.html">Amenities</a></li>
+        <li><a href="Gallery.html">Gallery</a></li>
+        <li><a href="Packages.html">Packages</a></li>
+        <li><a href="Booking.html" aria-current="page">Booking</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
-    <!-- Page Hero -->
+    <!-- Page Hero (uses booking hero image via CSS: .booking-hero background) -->
     <section class="page-hero booking-hero" aria-labelledby="booking-hero-title">
       <div class="page-hero__inner">
         <h1 id="booking-hero-title">Booking</h1>
@@ -72,37 +72,84 @@
           </p>
         </header>
 
+        <!-- Progress / Steps (JS later can update aria-current + progress width) -->
+        <div class="booking-steps" aria-label="Progreso de reserva">
+          <ol class="steps" role="list">
+            <li class="step" aria-current="step">
+              <span class="step__dot" aria-hidden="true"></span>
+              <span class="step__label">Contacto</span>
+            </li>
+            <li class="step">
+              <span class="step__dot" aria-hidden="true"></span>
+              <span class="step__label">Fechas</span>
+            </li>
+            <li class="step">
+              <span class="step__dot" aria-hidden="true"></span>
+              <span class="step__label">Servicios</span>
+            </li>
+            <li class="step">
+              <span class="step__dot" aria-hidden="true"></span>
+              <span class="step__label">Confirmación</span>
+            </li>
+          </ol>
+
+          <div class="steps-bar" aria-hidden="true">
+            <div class="steps-bar__fill" style="width: 25%"></div>
+          </div>
+        </div>
+
+        <!-- Success panel (hidden by default; JS later can toggle) -->
+        <div class="form-status form-status--success" id="formSuccess" hidden>
+          <h3>Solicitud enviada</h3>
+          <p>
+            Recibimos tu solicitud. Te responderemos con disponibilidad y opciones lo antes posible.
+            Si es urgente, escríbenos por WhatsApp.
+          </p>
+          <a class="btn btn--ghost" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </div>
+
+        <!-- IMPORTANT:
+          Option 2 requires a real receiver endpoint:
+          - Form service URL (Formspree/Getform/Basin/Netlify Forms)
+          - OR your own backend script (PHP/Node/etc.)
+          Replace action="/enviar-reserva" accordingly.
+        -->
         <form class="booking-form" action="/enviar-reserva" method="post">
+          <!-- Helpful hidden metadata (good for inbox/CRM) -->
+          <input type="hidden" name="form_name" value="Booking Request" />
+          <input type="hidden" name="page" value="Booking.html" />
+
           <!-- Honeypot (basic anti-spam) -->
           <div class="hp" aria-hidden="true">
-            <label>Deja este campo vacío
-              <input type="text" name="company" tabindex="-1" autocomplete="off" />
-            </label>
+            <label for="company_hp">Deja este campo vacío</label>
+            <input id="company_hp" type="text" name="company" tabindex="-1" autocomplete="off" />
           </div>
 
           <fieldset>
             <legend>Datos de contacto</legend>
 
             <div class="form-grid">
-              <label>
-                Nombre y apellido
-                <input type="text" name="full_name" autocomplete="name" required />
-              </label>
+              <div class="field">
+                <input id="full_name" type="text" name="full_name" autocomplete="name" placeholder=" " required />
+                <label for="full_name">Nombre y apellido</label>
+              </div>
 
-              <label>
-                Email
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
+              <div class="field">
+                <input id="email" type="email" name="email" autocomplete="email" placeholder=" " required />
+                <label for="email">Email</label>
+              </div>
 
-              <label>
-                Teléfono / WhatsApp
-                <input type="tel" name="phone" autocomplete="tel" inputmode="tel" />
-              </label>
+              <div class="field">
+                <input id="phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder=" " />
+                <label for="phone">Teléfono / WhatsApp</label>
+              </div>
 
-              <label>
-                País / Ciudad
-                <input type="text" name="location" autocomplete="country-name" />
-              </label>
+              <div class="field">
+                <input id="location" type="text" name="location" autocomplete="country-name" placeholder=" " />
+                <label for="location">País / Ciudad</label>
+              </div>
             </div>
           </fieldset>
 
@@ -110,25 +157,25 @@
             <legend>Fechas y personas</legend>
 
             <div class="form-grid">
-              <label>
-                Check-in
-                <input type="date" name="checkin" required />
-              </label>
+              <div class="field">
+                <input id="checkin" type="date" name="checkin" required />
+                <label for="checkin">Check-in</label>
+              </div>
 
-              <label>
-                Check-out
-                <input type="date" name="checkout" required />
-              </label>
+              <div class="field">
+                <input id="checkout" type="date" name="checkout" required />
+                <label for="checkout">Check-out</label>
+              </div>
 
-              <label>
-                Adultos
-                <input type="number" name="adults" min="1" value="1" required />
-              </label>
+              <div class="field">
+                <input id="adults" type="number" name="adults" min="1" value="1" required placeholder=" " />
+                <label for="adults">Adultos</label>
+              </div>
 
-              <label>
-                Niños (opcional)
-                <input type="number" name="children" min="0" value="0" />
-              </label>
+              <div class="field">
+                <input id="children" type="number" name="children" min="0" value="0" placeholder=" " />
+                <label for="children">Niños (opcional)</label>
+              </div>
             </div>
           </fieldset>
 
@@ -140,6 +187,7 @@
             </p>
 
             <div class="checkbox-grid" role="group" aria-label="Servicios">
+              <!-- If your backend dislikes array syntax, change name="services[]" to name="services" -->
               <label class="check">
                 <input type="checkbox" name="services[]" value="Hospedaje" />
                 <span>Hospedaje</span>
@@ -182,26 +230,26 @@
             </div>
 
             <div class="form-grid">
-              <label>
-                Paquete (si aplica)
-                <select name="package_choice">
+              <div class="field">
+                <select id="package_choice" name="package_choice">
                   <option value="">Seleccionar…</option>
                   <option value="RelaxNaturaleza">Relax & Naturaleza</option>
                   <option value="WellnessIntegral">Wellness Integral</option>
                   <option value="AventuraTours">Aventura & Tours</option>
                   <option value="RetiroPrivado">Retiro Privado</option>
                 </select>
-              </label>
+                <label for="package_choice">Paquete (si aplica)</label>
+              </div>
 
-              <label>
-                Preferencia de horario (opcional)
-                <select name="time_preference">
+              <div class="field">
+                <select id="time_preference" name="time_preference">
                   <option value="">Sin preferencia</option>
                   <option value="Manana">Mañana</option>
                   <option value="Tarde">Tarde</option>
                   <option value="Noche">Noche</option>
                 </select>
-              </label>
+                <label for="time_preference">Preferencia de horario (opcional)</label>
+              </div>
             </div>
           </fieldset>
 
@@ -209,9 +257,8 @@
             <legend>Detalles adicionales</legend>
 
             <div class="form-grid">
-              <label>
-                Tipo de experiencia (opcional)
-                <select name="experience_type">
+              <div class="field">
+                <select id="experience_type" name="experience_type">
                   <option value="">Seleccionar…</option>
                   <option value="Descanso">Descanso</option>
                   <option value="Bienestar">Bienestar</option>
@@ -220,25 +267,32 @@
                   <option value="Pareja">Pareja</option>
                   <option value="Evento">Evento / Taller</option>
                 </select>
-              </label>
+                <label for="experience_type">Tipo de experiencia (opcional)</label>
+              </div>
 
-              <label>
-                Presupuesto aproximado (opcional)
-                <input type="text" name="budget" placeholder="Ej: $300 - $600" />
-              </label>
+              <div class="field">
+                <input id="budget" type="text" name="budget" placeholder=" " />
+                <label for="budget">Presupuesto aproximado (opcional)</label>
+              </div>
             </div>
 
-            <label>
-              Mensaje / Requerimientos
-              <textarea name="message" rows="6" placeholder="Ej: alergias, celebraciones, horario de llegada, necesidades especiales…" required></textarea>
-            </label>
+            <div class="field field--textarea">
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder=" "
+                required
+              ></textarea>
+              <label for="message">Mensaje / Requerimientos</label>
+            </div>
           </fieldset>
 
           <fieldset>
             <legend>Confirmación</legend>
 
             <label class="check">
-              <input type="checkbox" name="consent" required />
+              <input id="consent" type="checkbox" name="consent" required />
               <span>Confirmo que la información es correcta y autorizo contacto para gestionar la reserva.</span>
             </label>
 
@@ -250,7 +304,6 @@
           <div class="form-actions">
             <button type="submit" class="btn">Enviar solicitud</button>
 
-            <!-- Optional quick contact -->
             <a class="btn btn--ghost" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
               Reservar por WhatsApp
             </a>
@@ -263,15 +316,18 @@
     <section class="section booking-info" aria-labelledby="booking-info-title">
       <div class="section__inner">
         <h2 id="booking-info-title">Información útil</h2>
+
         <div class="info-grid">
           <article class="info-card">
             <h3>Horarios</h3>
             <p>Check-in: [hora] · Check-out: [hora]. (Edita según tu operación real.)</p>
           </article>
+
           <article class="info-card">
             <h3>Política</h3>
             <p>Incluye cancelaciones, cambios, depósito y condiciones principales.</p>
           </article>
+
           <article class="info-card">
             <h3>Contacto</h3>
             <p>
@@ -293,6 +349,7 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    /* JS pagination / form submit behavior can go here later */
   </script>
 </body>
 </html>
